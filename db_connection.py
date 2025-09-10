@@ -16,10 +16,9 @@ def connect():
         print("Connecting to postgres sql...")
         connections = psycopg2.connect(**db_params)
 
-        crsr = connections.cursor()
-        print("Postgresql is configured")
-        crsr.execute("select * from data where name like 'A%'")
-        db_version = crsr.fetchall()
+        cr = connections.cursor()
+        cr.execute("select * from data where name like 'A%' and salary > 40000")
+        db_version = cr.fetchall()
         print(db_version)
 
 
@@ -28,7 +27,7 @@ def connect():
     finally:
         if connections is not None:
             connections.close()
-            print("Database connection closed successfully")
+            print("Connection closed")
 
 
 if __name__ == "__main__":
