@@ -5,13 +5,7 @@ def connect():
     try:
         connections = None
 
-        db_params = {
-            "host": "localhost",
-            "port": "5432",
-            "database": "work_db",
-            "user": "postgres",
-            "password": "postgres"
-        }
+        db_params = {"host": "localhost","port": "5432","database": "work_db","user": "postgres","password": "postgres"}
 
         print("Connecting to postgres sql...")
         connections = psycopg2.connect(**db_params)
